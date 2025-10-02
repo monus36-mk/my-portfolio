@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Home</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0d1117;
+      color: white;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      margin-top: 20px;
+      position: sticky;
+      top: 0;
+      background: #161b22;
+      padding: 10px 0;
+      z-index: 1000;
+    }
+    .navbar a {
+      background-color: #007BFF;
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 10px 30px;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+    .navbar a:hover {
+      background-color: #0056b3;
+    }
+
+    /* Slider */
+    .slider {
+      position: relative;
+      max-width: 100%;
+      height: 500px;
+      overflow: hidden;
+      margin: 40px auto;
+      border-radius: 12px;
+    }
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 100%;
+    }
+    .slides img {
+      width: 100%; /* each image fills slider container */
+      flex-shrink: 0; /* prevent shrinking */
+      height: 500px;
+      object-fit: cover;
+      user-select: none;
+    }
+
+    /* Dots */
+    .dots {
+      text-align: center;
+      margin-top: 15px;
+    }
+    .dot {
+      height: 12px;
+      width: 12px;
+      margin: 0 5px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+    .dot.active {
+      background-color: #007BFF;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <a href="http://127.0.0.1:3000/idex.html?serverWindowId=5176e24b-0ceb-4481-bf30-a157a9d56468.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- Slider -->
+  <div class="slider">
+    <div class="slides">
+      <img src="homy.jpeg" alt="Slide 1">
+      <img src="img2.jpg" alt="Slide 2">
+      <img src="img3.jpg" alt="Slide 3">
+      <img src="img4.jpg" alt="Slide 4">
+    </div>
+  </div>
+
+  <!-- Dots -->
+  <div class="dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+
+  <script>
+    const slides = document.querySelector('.slides');
+    const slideImages = document.querySelectorAll('.slides img');
+    const dots = document.querySelectorAll('.dot');
+    let currentIndex = 0;
+    const total = slideImages.length;
+
+    // Show slide by index
+    function showSlide(index) {
+      currentIndex = index;
+      slides.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[index].classList.add('active');
+    }
+
+    // Auto slide every 3 seconds
+    let slideInterval = setInterval(() => {
+      showSlide((currentIndex + 1) % total);
+    }, 3000);
+
+    // Dots click
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        showSlide(i);
+        resetInterval();
+      });
+    });
+
+    // Swipe functionality
+    let startX = 0;
+    let isDragging = false;
+
+    const slider = document.querySelector('.slider');
+    slider.addEventListener('touchstart', e => {
+      startX = e.touches[0].clientX;
+      isDragging = true;
+      clearInterval(slideInterval);
+    });
+    slider.addEventListener('touchend', e => {
+      if(!isDragging) return;
+      let diff = e.changedTouches[0].clientX - startX;
+      if(diff > 50) showSlide((currentIndex - 1 + total) % total); // swipe right
+      else if(diff < -50) showSlide((currentIndex + 1) % total);    // swipe left
+      else showSlide(currentIndex);
+      isDragging = false;
+      resetInterval();
+    });
+
+    // Reset auto-slide interval
+    function resetInterval() {
+      clearInterval(slideInterval);
+      slideInterval = setInterval(() => {
+        showSlide((currentIndex + 1) % total);
+      }, 3000);
+    }
+
+    // Initialize
+    showSlide(0);
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About — MONUS KUMAR</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0f1724;
+      --card: #0b1220;
+      --muted: #94a3b8;
+      --accent: #2563eb; /* blue button */
+      --glass: rgba(255,255,255,0.03);
+      --radius: 14px;
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,#071029 0%, #081326 60%);
+      color:#e6eef8;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      padding:32px;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 30px;
+      background: #0b1220;
+      padding: 10px 20px;
+      border-radius: 12px;
+    }
+    .navbar a {
+      background-color: var(--accent);
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 10px 25px;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+    .navbar a:hover {
+      background-color: #1e40ff;
+    }
+
+    .card{
+      width:100%;
+      max-width:980px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:var(--radius);
+      box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+      display:grid;
+      grid-template-columns: 320px 1fr;
+      gap:28px;
+      padding:28px;
+      align-items:center;
+    }
+
+    /* Left column */
+    .left{
+      padding:18px;
+      border-radius:12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      text-align:center;
+    }
+    .avatar{
+      width:140px;
+      height:140px;
+      border-radius:999px;
+      background:linear-gradient(135deg, #0b1220, #10213a);
+      margin: 0 auto 16px auto;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      font-size:48px;
+      color: #cfe0ff;
+      overflow:hidden;
+    }
+    .name{
+      font-size:20px;
+      font-weight:700;
+      margin:6px 0 2px;
+    }
+    .role{ color:var(--muted); font-size:13px; margin-bottom:14px }
+    .socials{ display:flex; gap:10px; justify-content:center; margin-bottom:16px; }
+    .socials a{
+      background:var(--glass);
+      padding:8px 10px;
+      border-radius:10px;
+      text-decoration:none;
+      color:inherit;
+      font-size:13px;
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    .left .stats{ display:flex; gap:12px; justify-content:center; margin-top:6px; font-size:13px; color:var(--muted) }
+    .stat{ background:rgba(255,255,255,0.02); padding:8px 10px; border-radius:8px }
+
+    /* Right column */
+    .right{ padding:6px 2px; }
+    h1{ margin:0 0 10px; font-size:22px; letter-spacing:-0.2px }
+    p.lead{ margin:0 0 16px; color:var(--muted); line-height:1.5 }
+    .skills{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px }
+    .chip{ background:rgba(255,255,255,0.03); padding:8px 10px; border-radius:999px; font-size:13px; color:var(--muted); border:1px solid rgba(255,255,255,0.02) }
+
+    .two-cols{ display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-bottom:18px }
+
+    .box{
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      padding:12px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.05);
+      font-size:14px;
+      color:var(--muted);
+    }
+
+    /* Responsive */
+    @media (max-width:880px){
+      .card{ grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <main class="card">
+    <!-- Left side -->
+    <div class="left">
+      <div class="avatar">YN</div>
+      <div class="name">Monus Kumar </div>
+      <div class="role">CSE Student · Web Developer</div>
+      <div class="socials">
+        <a href="">GitHub</a>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+
+    <!-- Right side -->
+    <div class="right">
+      <h1>About Me</h1>
+      <p class="lead">I’m an 19-year-old Computer Science student from Thanjavur. I love building websites, e-commerce platforms, and chat apps. Currently I’m working on <b>Rush Deal</b> (dropshipping site) and <b>Flu Chat</b> (chat app MVP).</p>
+      
+      <h2>Skills</h2>
+      <div class="skills">
+        <span class="chip">HTML</span>
+        <span class="chip">CSS</span>
+        <span class="chip">JavaScript</span>
+        <span class="chip">Shopify</span>
+        <span class="chip">React (Learning)</span>
+      </div>
+
+      <div class="two-cols">
+        <div class="box"><b>Education:</b> 2nd year, Anna University</div>
+        <div class="box"><b>Focus:</b> Full-stack projects & entrepreneurship</div>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
